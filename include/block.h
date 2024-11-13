@@ -8,7 +8,7 @@
 
 class SolidBlock {
 public: 
-    static constexpr float block_vertices_[120] = {
+    float block_vertices_[120] = {
     // Position         // Texture Coords
     // Front face
     -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
@@ -47,7 +47,7 @@ public:
     -0.5f, -0.5f,  0.5f,  0.0f, 1.0f
     };
 
-    static constexpr unsigned int block_indices_[36] = {
+    unsigned int block_indices_[36] = {
     // Front face
     0, 1, 2,
     2, 3, 0,

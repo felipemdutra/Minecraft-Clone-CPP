@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "../include/shader.h"
+#include "../include/chunk.h"
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -49,10 +50,15 @@ int main()
     // shader
     Shader shader_program("shaders/vShader.txt", "shaders/fShader.txt");
 
+    // chunk
+    Chunk chunk(16, 16, 16);
+
     while (!glfwWindowShouldClose(window))
     {
         glClearColor(0.3f, 0.5f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        chunk.RenderOne();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
