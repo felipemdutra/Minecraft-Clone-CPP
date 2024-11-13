@@ -18,8 +18,6 @@ public:
     void InitializeChunk();
 
     void Render();
-
-    void RenderOne();
 };
 
 #endif
