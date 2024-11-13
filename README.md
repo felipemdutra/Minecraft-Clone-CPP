@@ -3,7 +3,7 @@
 This is a Minecraft Clone I am developing using OpenGL.
 The Project aims to recreate core features of Minecraft.
 
-It's still in development, but I plan to add more features.
+It's still in development, so I plan to add more features.
 
 Technologies used:
 - C++
