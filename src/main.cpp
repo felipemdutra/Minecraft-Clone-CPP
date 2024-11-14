@@ -3,8 +3,8 @@
 
 #include <iostream>
 
+#include "../include/block.h"
 #include "../include/shader.h"
-#include "../include/chunk.h"
 #include "../include/camera.h"
 
 // Set up camera
@@ -78,8 +78,8 @@ int main()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);    
  
     // chunk
-    Chunk chunk(16, 16, 16);
-    SolidBlock block(glm::vec3(0.0f, 0.0f, 9.0f));
+    SolidBlock block;
+    block.LoadTexture("assets/grass_block_top.png");
 
     while (!glfwWindowShouldClose(window))
     {

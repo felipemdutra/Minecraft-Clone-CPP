@@ -3,11 +3,14 @@
 
 #include <glm/glm.hpp>
 #include <GL/glew.h>
+#include "stb_image.h"
 
 #include <vector>
 
 class SolidBlock {
 public: 
+    unsigned int texture;
+
     float block_vertices_[120] = {
     // Position         // Texture Coords
     // Front face
@@ -75,11 +78,13 @@ public:
 
     glm::vec3 position_;
 
-    SolidBlock(glm::vec3 position) : position_(position) {}
+    SolidBlock();
 
     std::vector<float> GetTransformedVertices() const;
      
     std::vector<unsigned int> GetIndices(unsigned int offset) const;
+
+    void LoadTexture(const char* texture_path);
 
     void Render(unsigned int &VAO, unsigned int &VBO, unsigned int &EBO);
 };
