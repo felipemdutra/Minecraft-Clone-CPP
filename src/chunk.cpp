@@ -18,16 +18,6 @@ Chunk::Chunk(unsigned int x, unsigned int z, unsigned int y)
 
 void Chunk::InitializeChunk()
 {
-    for (unsigned int x = 0; x < chunk_x_; ++x)
-    {
-        for (unsigned int y = 0; y < chunk_y_; ++y)
-        {
-            for (unsigned int z = 0; z < chunk_z_; ++z) 
-            {
-                blocks_.emplace_back(glm::vec3(x, y, z));
-            }
-        }
-    }
 }
 
 void Chunk::Render() 
