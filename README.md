@@ -17,6 +17,9 @@ Features:
 - Basic block rendering and texturing
 - First-person camera movement
 
+What I'm working on right now:
+- Chunk system
+
 Planned Features:
 - Random terrain generation
 - Block interactions ( placing, breaking )
