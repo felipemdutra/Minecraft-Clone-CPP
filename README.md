@@ -1,9 +1,10 @@
-11/12/2024
-
 This is a Minecraft Clone I am developing using OpenGL.
+This is my first time using OpenGL.
 The Project aims to recreate core features of Minecraft.
 
 It's still in development, so I plan to add more features.
+
+![Capture](https://github.com/user-attachments/assets/cbd84b10-7c53-40d7-ad26-d8f1b2bd996b)
 
 Technologies used:
 - C++
@@ -15,7 +16,6 @@ Technologies used:
 Features:
 - Basic block rendering and texturing
 - First-person camera movement
-- Chunk system for large worlds ( in development )
 
 Planned Features:
 - Random terrain generation
