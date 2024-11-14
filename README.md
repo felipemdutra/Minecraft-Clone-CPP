@@ -13,7 +13,7 @@ Technologies used:
 - glm ( math and transformations )
 
 Features:
-- Basic block rendering and texturing
+- Basic block rendering ( soon texturing )
 - First-person camera movement
 - Chunk system for large worlds ( in development )
 
