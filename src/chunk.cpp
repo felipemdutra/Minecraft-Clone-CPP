@@ -32,20 +32,5 @@ void Chunk::InitializeChunk()
 
 void Chunk::Render() 
 {
-    glBindVertexArray(vao_);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo_);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_);
-
-    for (const auto& block : blocks_)
-    {
-        std::vector<float> vertices = block.GetTransformedVertices();
-        // Update buffer data with transformed vertices for each block
-        glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
-
-        std::vector<unsigned int> indices = block.GetIndices(0);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
-
-        // draw the block
-        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-    }
+    
 }

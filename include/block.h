@@ -80,6 +80,8 @@ public:
     std::vector<float> GetTransformedVertices() const;
      
     std::vector<unsigned int> GetIndices(unsigned int offset) const;
+
+    void Render(unsigned int &VAO, unsigned int &VBO, unsigned int &EBO);
 };
 
 #endif
