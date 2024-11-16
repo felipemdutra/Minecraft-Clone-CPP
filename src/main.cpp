@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "../include/block.h"
+#include "../include/chunk.h"
 #include "../include/shader.h"
 #include "../include/camera.h"
 
@@ -13,22 +13,22 @@ Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 int window_width = 800;
 int window_height = 600;
 
-float lastX = (float)window_width / 2.0f; 
-float lastY = (float)window_height / 2.0f; 
+float lastX = (float)window_width / 2.0f;
+float lastY = (float)window_height / 2.0f;
 bool firstMouse = true;
 
 float delta_time = 0.0f;
 float last_frame = 0.0f;
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
-void ProcessKeyboardInput(GLFWwindow* window);
+void ProcessKeyboardInput(GLFWwindow *window);
 
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void mouse_callback(GLFWwindow *window, double xpos, double ypos);
 
-int main() 
+int main()
 {
-    if (!glfwInit()) 
+    if (!glfwInit())
     {
         std::cerr << "Error! Failed to initialize GLFW!" << std::endl;
         return -1;
@@ -38,12 +38,12 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(window_width, window_height, "Scuffed Minecraft", nullptr, nullptr);
-    if (!window) 
+    GLFWwindow *window = glfwCreateWindow(window_width, window_height, "Scuffed Minecraft", nullptr, nullptr);
+    if (!window)
     {
         std::cerr << "Error! Failed to create window!" << std::endl;
         glfwTerminate();
-        return -1;  
+        return -1;
     }
 
     glfwMakeContextCurrent(window);
@@ -64,22 +64,7 @@ int main()
     // shader
     Shader shader_program("shaders/vShader.txt", "shaders/fShader.txt");
 
-    // temporary buffers
-    unsigned int vao, vbo, ebo;
-
-    glGenVertexArrays(1, &vao);
-
-    glGenBuffers(1, &vbo);
-    glGenBuffers(1, &ebo);
-
-    glBindVertexArray(vao);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);    
- 
-    // chunk
-    SolidBlock block;
-    block.LoadTexture("assets/grass_block_top.png");
+    Chunk chunk;
 
     while (!glfwWindowShouldClose(window))
     {
@@ -93,35 +78,33 @@ int main()
         shader_program.setMat4("view", view);
         shader_program.setMat4("projection", projection);
 
-        block.Render(vao, vbo, ebo);
+        // block.Render(vao, vbo, ebo);
+        chunk.RenderChunk();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
     glfwDestroyWindow(window);
-    glDeleteVertexArrays(1, &vao);
-    glDeleteBuffers(1, &vbo);
-    glDeleteBuffers(1, &ebo);
     glfwTerminate();
     return 0;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) 
+void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
     window_width = width;
     window_height = height;
 }
 
-void ProcessKeyboardInput(GLFWwindow* window)
+void ProcessKeyboardInput(GLFWwindow *window)
 {
     float current_frame = glfwGetTime();
     delta_time = current_frame - last_frame;
     last_frame = current_frame;
 
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);    
+        glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(FORWARD, delta_time);
@@ -137,7 +120,7 @@ void ProcessKeyboardInput(GLFWwindow* window)
         camera.ProcessKeyboard(DOWN, delta_time);
 }
 
-void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+void mouse_callback(GLFWwindow *window, double xpos, double ypos)
 {
     if (firstMouse)
     {
