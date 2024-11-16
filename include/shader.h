@@ -9,12 +9,12 @@
 #include <fstream>
 #include <string>
 
-class Shader 
+class Shader
 {
 public:
     unsigned int ID;
 
-    Shader(const char* vertexPath, const char* fragmentPath);
+    Shader(const char *vertexPath, const char *fragmentPath);
 
     void Use();
     // utility uniform functions
