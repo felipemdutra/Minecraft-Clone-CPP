@@ -26,3 +26,9 @@ Planned Features:
 - Random terrain generation
 - Block interactions ( placing, breaking )
 - Player movement and collision
+
+To use this project, in your terminal type:
+
+git clone https://github.com/felipemdutra/Minecraft-Clone-CPP
+
+cd Minecraft-Clone-CPP
