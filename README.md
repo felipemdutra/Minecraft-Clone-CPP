@@ -17,7 +17,7 @@ Technologies used:
 Features:
 - Basic block rendering and texturing
 - First-person camera movement
-- basic chunk system
+- Basic chunk system
 
 What I'm working on right now:
 - Face culling for chunks
