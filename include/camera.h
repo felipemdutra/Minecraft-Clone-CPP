@@ -33,9 +33,9 @@ public:
     float Pitch;
     float MovementSpeed;
     float MouseSensitivity;
-    
+
     Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH)
-    : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY)
+        : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY)
     {
         Position = position;
         WorldUp = up;
@@ -45,7 +45,7 @@ public:
     }
 
     Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch)
-    : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY)
+        : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY)
     {
         Position = glm::vec3(posX, posY, posZ);
         WorldUp = glm::vec3(upX, upY, upZ);
@@ -62,12 +62,18 @@ public:
     void ProcessKeyboard(Camera_Movement direction, float deltaTime)
     {
         float velocity = MovementSpeed * deltaTime;
-        if (direction == FORWARD) Position += Front * velocity;
-        if (direction == BACKWARD) Position -= Front * velocity;
-        if (direction == LEFT) Position -= Right * velocity;
-        if (direction == RIGHT) Position += Right * velocity;
-        if (direction == UP) Position += WorldUp * velocity;
-        if (direction == DOWN) Position -= WorldUp * velocity;
+        if (direction == FORWARD)
+            Position += Front * velocity;
+        if (direction == BACKWARD)
+            Position -= Front * velocity;
+        if (direction == LEFT)
+            Position -= Right * velocity;
+        if (direction == RIGHT)
+            Position += Right * velocity;
+        if (direction == UP)
+            Position += WorldUp * velocity;
+        if (direction == DOWN)
+            Position -= WorldUp * velocity;
     }
 
     void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true)
@@ -75,7 +81,7 @@ public:
         xoffset *= MouseSensitivity;
         yoffset *= MouseSensitivity;
 
-        Yaw   += xoffset;
+        Yaw += xoffset;
         Pitch += yoffset;
 
         // make sure that when pitch is out of bounds, screen doesn't get flipped
@@ -90,8 +96,10 @@ public:
         // update Front, Right and Up Vectors using the updated Euler angles
         updateCameraVectors();
     }
+
 private:
-    void updateCameraVectors() {
+    void updateCameraVectors()
+    {
         glm::vec3 front;
         front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
         front.y = sin(glm::radians(Pitch));
@@ -99,7 +107,7 @@ private:
         Front = glm::normalize(front);
         Right = glm::normalize(glm::cross(Front, WorldUp));
         Up = glm::normalize(glm::cross(Right, Front));
-    } 
-    };
+    }
+};
 
 #endif
