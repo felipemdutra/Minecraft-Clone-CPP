@@ -9,7 +9,7 @@ LDFLAGS = -lGL -lGLEW -lglfw
 SRC_DIR = src
 INCLUDE_DIR = include
 BUILD_DIR = builds
-TARGET_DIR = .
+TARGET_DIR = $(BUILD_DIR)
 TARGET = $(TARGET_DIR)/minecraft_clone
 
 # Source files and object files
@@ -21,6 +21,7 @@ all: $(TARGET)
 
 # Link the final executable
 $(TARGET): $(OBJECTS)
+	@mkdir -p $(TARGET_DIR)
 	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
 
 # Compile source files into object files
@@ -30,7 +31,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 # Clean up
 clean:
-	rm -rf $(BUILD_DIR)/*.o $(TARGET)
+	rm -rf $(BUILD_DIR)/*.o $(BUILD_DIR)/minecraft_clone
 
 # Run the project
 run: all
